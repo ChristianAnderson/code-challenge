@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Basic Report of {{ foodName | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>  Nutrition Information </ion-list-header>
+
+          <ion-item *ngFor="let item of currentFood">
+            <ion-label>
+              <h2>{{ item.nutrientName }}</h2>
+              <h3>{{ item.value }} {{ item.unitName }}</h3>
+            </ion-label>
+          </ion-item>
+</ion-content>

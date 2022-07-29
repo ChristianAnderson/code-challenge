@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Default Searchbar -->
+<ion-searchbar  [(ngModel)]="foodName"></ion-searchbar>
+<ion-button expand="block" (click)="search(foodName)" [disabled]="loading">
+  <span *ngIf="loading">Loading</span>
+  <span *ngIf="!loading">Search</span>
+</ion-button>
+
+<ion-list *ngIf="list.length">
+  <ion-list-header> Items that match </ion-list-header>
+  <ion-item *ngFor="let item of list">
+    <ion-label>{{ item.lowercaseDescription | titlecase }}</ion-label>
+    <ion-note slot="end" color="primary">
+      <!-- <a routerDirection="root" [routerLink]="['../basic-report/', item.fdcId]" > -->
+        <a routerDirection="root" [routerLink]="['basic-report/', item.fdcId]" >
+        Go to Basic Report 
+      </a>
+    </ion-note>
+  </ion-item>
+</ion-list>
+
+
+</ion-content>
