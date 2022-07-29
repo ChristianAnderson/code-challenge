@@ -1,0 +1,7 @@
+{
+  "name": "coding-challenge-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
