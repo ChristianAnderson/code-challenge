@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>favorites</ion-title>
+    <ion-title>Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list *ngIf="favsArray.length">
+    <ion-list-header> Items that match </ion-list-header>
+    <ion-item *ngFor="let item of favsArray">
+      <ion-label>
+        {{ item.lowercaseDescription | titlecase }}
+        <span 
+          style="cursor: pointer; font-size: 10px; color: red; " 
+          *ngIf="!(checkIfItsInFavList(item.fdcId))" 
+          (click)="addToFavs(item.lowercaseDescription, item.fdcId)">
+            <ion-icon name="heart-outline"></ion-icon>
+            Click to add in favs
+          </span>
+        <span 
+          style="cursor: pointer; font-size: 10px;" 
+          *ngIf="checkIfItsInFavList(item.fdcId)" 
+          (click)="deleteFav(item.fdcId)" >
+            <ion-icon name="heart-dislike-outline"></ion-icon>
+            Click to remove from favs
+          </span>
+      </ion-label>
+      <ion-note slot="end" color="primary">
+        <!-- <a routerDirection="root" [routerLink]="['../basic-report/', item.fdcId]" > -->
+          <a style="cursor: pointer" (click)="goToBasicReport(item.fdcId)">
+          Go to Basic Report 
+        </a>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+  
+  <ion-content *ngIf="favsArray.length == 0">
+    <p>
+      No Food is matching this search
+    </p>
+  </ion-content>
 </ion-content>

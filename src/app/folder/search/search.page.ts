@@ -11,7 +11,7 @@ import { LocalService } from 'src/app/services/local.service';
 })
 export class SearchPage implements OnInit {
 
-  foodName : string = 'pizza'
+  foodName : string = ''
   list : [] = [];
   constructor(
     private foodService: FoodService,
@@ -33,8 +33,10 @@ export class SearchPage implements OnInit {
           console.log(data);
           this.list = data;
           this.loading = false;
+          this.foodName = data[0].lowercaseDescription;
         }) 
     }
+    this.localStore.saveData('currentFood', foodName)
   }
 
   goToBasicReport(itemId: string) {
@@ -52,7 +54,7 @@ export class SearchPage implements OnInit {
     }
     console.log(favsArray);
     favsArray.push(
-      { 'name' : name,
+      { 'lowercaseDescription' : name,
         'fdcId' : id
      }
       );

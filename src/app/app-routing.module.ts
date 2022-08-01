@@ -4,7 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/search',
+    redirectTo: '',
+    // redirectTo: 'folder/search',
     pathMatch: 'full'
   },
   {

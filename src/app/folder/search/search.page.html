@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -41,5 +44,10 @@
   </ion-item>
 </ion-list>
 
+<ion-content *ngIf="list.length == 0">
+  <p>
+    No Food is matching this search
+  </p>
+</ion-content>
 
 </ion-content>
