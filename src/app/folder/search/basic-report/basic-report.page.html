@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>Basic Report of {{ foodName | titlecase }}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,7 +10,7 @@
 <ion-content>
   <ion-list-header>  Nutrition Information </ion-list-header>
 
-          <ion-item *ngFor="let item of currentFood">
+          <ion-item *ngFor="let item of currentFood" [hidden]="item.value == 0">
             <ion-label>
               <h2>{{ item.nutrientName }}</h2>
               <h3>{{ item.value }} {{ item.unitName }}</h3>
